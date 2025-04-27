@@ -1,0 +1,47 @@
+# Python bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Django-specific files
+*.log
+*.pot
+*.pyc
+*.db
+*.sqlite3
+*.db-journal
+
+# Virtual environment directories
+venv/
+env/
+.venv/
+.env/
+VirtualEnv
+.aquilify/
+
+# IDE and editor directories
+.idea/
+.vscode/
+
+# Distribution / packaging directories
+build/
+dist/
+*.egg-info/
+
+# Static and media files
+/static/
+/media/
+
+# PyCharm specific files
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Local settings
+local_settings.py
+
+# Cache files
+*.bak
+*.swp

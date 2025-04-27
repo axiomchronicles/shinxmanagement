@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Account Setup | MyBank</title>
+  <!-- TailwindCSS & Flowbite -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex items-center justify-center">
+
+  <main class="w-full max-w-md bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 space-y-6 transform hover:scale-105 transition-all duration-300">
+    <h1 class="text-3xl font-extrabold text-center text-gray-900 dark:text-white">
+      Account Setup
+    </h1>
+    <p class="text-center text-gray-600 dark:text-gray-400">Secure your account by setting a password and preferences</p>
+
+    <form id="setup-form" class="space-y-6">
+
+      <!-- Customer ID (readonly) -->
+      <div>
+        <label for="cust-id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          Customer ID
+        </label>
+        <div class="mt-1">
+          <input id="cust-id" type="text" value="CUST12345678" disabled
+            class="w-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-700 dark:text-gray-200"/>
+        </div>
+      </div>
+
+      <!-- New Password -->
+      <div>
+        <label for="new-password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          New Password
+        </label>
+        <div class="relative mt-1">
+          <input id="new-password" type="password" placeholder="••••••••" required
+            class="w-full bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-white focus:ring-blue-500 focus:border-blue-500 transition"/>
+        </div>
+        <!-- Strength Bar -->
+        <div class="mt-2 h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
+          <div id="strength-bar" class="h-full w-0 bg-red-500 transition-all"></div>
+        </div>
+        <p id="strength-text" class="mt-1 text-xs text-gray-500 dark:text-gray-400">Strength: —</p>
+      </div>
+
+      <!-- Confirm Password -->
+      <div>
+        <label for="confirm-password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          Confirm Password
+        </label>
+        <input id="confirm-password" type="password" placeholder="••••••••" required
+          class="mt-1 w-full bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-white focus:ring-blue-500 focus:border-blue-500 transition"/>
+      </div>
+
+      <!-- Terms & Conditions -->
+      <div class="flex items-center space-x-2">
+        <input id="agree" type="checkbox" required
+          class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"/>
+        <label for="agree" class="text-sm text-gray-700 dark:text-gray-300">
+          I agree to the <a href="#" class="text-blue-600 hover:underline dark:text-blue-400">Terms & Conditions</a>
+        </label>
+      </div>
+
+      <!-- Security Toggles -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- 2FA -->
+        
+<label class="inline-flex items-center cursor-pointer">
+    <input type="checkbox" value="" class="sr-only peer" checked>
+    <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Enable 2FA Auth</span>
+  </label>
+  
+        <!-- Alerts -->
+        
+<label class="inline-flex items-center cursor-pointer">
+    <input type="checkbox" value="" class="sr-only peer" checked>
+    <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Email/SMS</span>
+  </label>
+  
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition transform hover:scale-105">
+        Set Up Account
+      </button>
+    </form>
+  </main>
+
+  <script>
+    // Simple password strength meter
+    const pwd = document.getElementById('new-password');
+    const bar = document.getElementById('strength-bar');
+    const text = document.getElementById('strength-text');
+    pwd.addEventListener('input', () => {
+      const val = pwd.value;
+      let score = 0;
+      if (val.length >= 8) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+      const widths = ['0%', '25%', '50%', '75%', '100%'];
+      const colors = ['transparent','red','yellow','blue','green'];
+      bar.style.width = widths[score];
+      bar.style.backgroundColor = colors[score];
+      const labels = ['Too weak','Weak','Fair','Good','Strong'];
+      text.textContent = 'Strength: ' + labels[score];
+    });
+  </script>
+</body>
+</html>

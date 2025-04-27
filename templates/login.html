@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | MyBank</title>
+  <!-- TailwindCSS & Flowbite -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex items-center justify-center">
+
+  <main class="w-full max-w-lg bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-10 space-y-8">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 dark:text-white">
+      Welcome Back
+    </h1>
+    <p class="text-center text-gray-600 dark:text-gray-400">Log in with your Email or Customer ID</p>
+
+    <form action="#" method="POST" class="space-y-6">
+
+      <!-- Email or Customer ID -->
+      <div>
+        <label for="login-id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          Email or Customer ID
+        </label>
+        <div class="relative mt-1">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <!-- Heroicon: user -->
+            <svg class="w-5 h-5 text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a4 4 0 100 8 4 4 0 000-8zM2 18a8 8 0 1116 0H2z"/>
+            </svg>
+          </div>
+          <input
+            type="text"
+            name="login-id"
+            id="login-id"
+            required
+            placeholder="john.doe@example.com or 1234567890"
+            class="block w-full bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg py-3 pl-10 pr-4 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          />
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+        <div class="relative mt-1">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <!-- Heroicon: lock -->
+            <svg class="w-5 h-5 text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5 8V6a5 5 0 1110 0v2h1a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1v-8a1 1 0 011-1h1zm2-2a3 3 0 016 0v2H7V6z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            required
+            placeholder="••••••••"
+            class="block w-full bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg py-3 pl-10 pr-4 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          />
+        </div>
+      </div>
+
+      <!-- Remember & Forgot -->
+      <div class="flex items-center justify-between text-sm">
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+          <span class="ml-2 text-gray-600 dark:text-gray-400">Remember me</span>
+        </label>
+        <a href="#" class="text-blue-600 hover:underline dark:text-blue-400">Forgot password?</a>
+      </div>
+
+      <!-- Login Button -->
+      <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition"
+      >
+        Login
+      </button>
+
+      <!-- Divider -->
+      <div class="flex items-center justify-center space-x-2">
+        <span class="h-px w-16 bg-gray-300 dark:bg-gray-600"></span>
+        <span class="text-gray-500 dark:text-gray-400">OR</span>
+        <span class="h-px w-16 bg-gray-300 dark:bg-gray-600"></span>
+      </div>
+
+      <!-- Sign Up Link -->
+      <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+        Don’t have an account?
+        <a href="#" class="text-blue-600 hover:underline dark:text-blue-400">Create one</a>
+      </p>
+    </form>
+  </main>
+
+</body>
+</html>

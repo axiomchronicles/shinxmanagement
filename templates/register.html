@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Open New Bank Account | MyBank</title>
+  <!-- TailwindCSS & Flowbite -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+
+  <main class="min-h-screen flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-3xl bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 space-y-6">
+      <h1 class="text-2xl font-extrabold text-center text-gray-900 dark:text-white">
+        Open a New Account
+      </h1>
+
+      <form action="#" method="POST" class="space-y-6">
+
+        <!-- Personal Details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="fullname" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name *</label>
+            <input id="fullname" name="fullname" type="text" required placeholder="John Doe"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+          </div>
+          <div>
+            <label for="parentname" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Father’s/Mother’s Name *</label>
+            <input id="parentname" name="parentname" type="text" required placeholder="Jane Doe"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+          </div>
+          <div>
+            <label for="dob" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Date of Birth *</label>
+            <input id="dob" name="dob" type="date" required
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
+          </div>
+          <div>
+            <label for="gender" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Gender *</label>
+            <select id="gender" name="gender" required
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+              <option value="" disabled selected>Select Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Contact & ID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Mobile Number *</label>
+            <input id="phone" name="phone" type="tel" required placeholder="+91 9876543210"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email Address *</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+          </div>
+          <div>
+            <label for="aadhaar" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Aadhaar Number *</label>
+            <input id="aadhaar" name="aadhaar" type="text" maxlength="12" required placeholder="123412341234"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+          </div>
+          <div>
+            <label for="pan" class="block text-sm font-medium text-gray-700 dark:text-gray-300">PAN Number *</label>
+            <input id="pan" name="pan" type="text" maxlength="10" required placeholder="ABCDE1234F"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="space-y-4">
+          <div>
+            <label for="address" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Street Address *</label>
+            <input id="address" name="address" type="text" required placeholder="123 Main St"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label for="city" class="block text-sm font-medium text-gray-700 dark:text-gray-300">City *</label>
+              <input id="city" name="city" type="text" required placeholder="Mumbai"
+                class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                       focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
+            </div>
+            <div>
+              <label for="state" class="block text-sm font-medium text-gray-700 dark:text-gray-300">State *</label>
+              <input id="state" name="state" type="text" required placeholder="Maharashtra"
+                class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                       focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
+            </div>
+            <div>
+              <label for="pincode" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Pincode *</label>
+              <input id="pincode" name="pincode" type="text" maxlength="6" required placeholder="400001"
+                class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                       focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- Employment & Account -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="accountType" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Account Type *</label>
+            <select id="accountType" name="accountType" required
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+              <option disabled selected>Select Type</option>
+              <option>Savings</option>
+              <option>Current</option>
+              <option>Student</option>
+              <option>Senior Citizen</option>
+            </select>
+          </div>
+          <div>
+            <label for="employment" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Employment Status *</label>
+            <select id="employment" name="employment" required
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+              <option disabled selected>Select Status</option>
+              <option>Student</option>
+              <option>Salaried</option>
+              <option>Self-Employed</option>
+              <option>Retired</option>
+            </select>
+          </div>
+          <div>
+            <label for="deposit" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Initial Deposit (₹) *</label>
+            <input id="deposit" name="deposit" type="number" min="0" required placeholder="1000"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
+          </div>
+          <div>
+            <label for="nominee" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nominee Name</label>
+            <input id="nominee" name="nominee" type="text" placeholder="Optional"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
+                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            
+<label class="inline-flex items-center cursor-pointer">
+    <input type="checkbox" value="" class="sr-only peer" checked>
+    <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Enable Two-Factor Authentication</span>
+  </label>
+  
+          
+            
+<label class="inline-flex items-center cursor-pointer">
+    <input type="checkbox" value="" class="sr-only peer" checked>
+    <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">      Allow Online Transactions</span>
+  </label>
+  
+          
+           
+<label class="inline-flex items-center cursor-pointer">
+    <input type="checkbox" value="" class="sr-only peer" checked>
+    <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">      Receive Alerts (SMS/Email)</span>
+  </label>
+  
+          
+            
+<label class="inline-flex items-center cursor-pointer">
+    <input type="checkbox" value="" class="sr-only peer" checked>
+    <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">      Subscribe to Newsletters</span>
+  </label>
+  
+          
+          </div>
+
+        <!-- Submit -->
+        <div class="pt-6">
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg px-5 py-3 transition">
+            Submit Application
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </main>
+</body>
+</html>
