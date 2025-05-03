@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You - Shinx Management</title>
+
+  <!-- Tailwind CSS + Flowbite -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"/>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2563eb",
+            surface: "#1e293b",
+          },
+          animation: {
+            fadeIn: "fadeIn 1s ease-in-out",
+            pulseSlow: "pulse 3s infinite",
+          },
+          keyframes: {
+            fadeIn: {
+              from: { opacity: 0 },
+              to: { opacity: 1 },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  
+</head>
+<body class="bg-gradient-to-br from-blue-100 via-indigo-200 to-purple-200 dark:from-gray-900 dark:via-gray-800 dark:to-black min-h-screen flex items-center justify-center p-8 font-sans">
+
+  <div class="w-full max-w-6xl bg-white/70 dark:bg-gray-900/80 shadow-2xl backdrop-blur-2xl rounded-3xl px-10 py-16 text-center space-y-10 animate-fadeIn transition-all duration-700 border border-white/20 dark:border-gray-700">
+
+    <!-- Sparkles Icon -->
+    <div class="text-primary text-6xl animate-bounce"><i class="bi bi-stars"></i></div>
+
+    <!-- Main Heading -->
+    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+      🎉 Thank You for Joining Shinx Management!
+    </h1>
+
+    <!-- Subtext -->
+    <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+      Your account is under verification. Once approved, you’ll receive an activation email with next steps.
+    </p>
+
+    <!-- Progress Indicator -->
+    <div class="relative w-full max-w-xl mx-auto">
+      <div class="bg-gray-300 dark:bg-gray-700 h-4 rounded-full overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 h-full w-3/4 animate-slowPulse rounded-full transition-all duration-700 ease-in-out shadow-inner"></div>
+      </div>
+      <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">Verification in progress... 45%</div>
+    </div>
+
+    <!-- What’s Next -->
+    <div class="bg-white/60 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 backdrop-blur-md rounded-xl p-6 text-left shadow-md max-w-4xl mx-auto space-y-4">
+      <h2 class="text-xl font-bold text-gray-800 dark:text-white flex items-center gap-2">
+        <i class="bi bi-rocket-takeoff-fill text-primary text-2xl"></i> What's Next?
+      </h2>
+      <ul class="list-disc pl-6 text-gray-700 dark:text-gray-300 space-y-2">
+        <li><strong>Document Review:</strong> Our team is verifying your details.</li>
+        <li><strong>Account Setup:</strong> Once verified, access will be enabled.</li>
+        <li><strong>Confirmation Email:</strong> Sent with login details and dashboard link.</li>
+      </ul>
+    </div>
+
+    <!-- CTA Button -->
+    <a href="/" class="inline-flex items-center gap-2 px-8 py-3 text-white bg-primary hover:bg-blue-700 focus:ring-4 ring-primary/30 rounded-full shadow-lg text-lg font-semibold transition duration-300">
+      <i class="bi bi-house-door-fill text-xl"></i> Return to Homepage
+    </a>
+
+    <!-- Footer Contact -->
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-6">
+      Need help? Contact us at <a href="mailto:support@shinx.com" class="text-primary hover:underline">aegis.invincible@gmail.com</a>
+    </p>
+  </div>
+
+</body>
+</html>

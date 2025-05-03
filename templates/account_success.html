@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Account Status Timeline</title>
+
+  <!-- Tailwind & Flowbite CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+    rel="stylesheet"
+  />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
+/>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2563eb",
+            pending: "#64748b"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-start justify-center p-6">
+
+    <div class="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 space-y-6">
+
+    <!-- Header + Badge -->
+    <div class="text-center">
+      <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white">Account Setup Progress</h1>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">All confirmed steps are highlighted in blue.</p>
+      <div class="inline-flex items-center mt-4 px-4 py-2 bg-primary text-white rounded-full text-sm font-medium shadow">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+             d="M5 13l4 4L19 7"/></svg>
+        <span>3 of 6 Completed</span>
+      </div>
+    </div>
+
+    <!-- Flowbite Timeline -->
+    <ol class="relative border-l-2 border-gray-200 dark:border-gray-700 ml-4">
+      <!-- Step 1 -->
+      <li class="mb-10 ml-6">
+        <span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-primary rounded-full ring-4 ring-white dark:ring-gray-800">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+               d="M5 13l4 4L19 7"/></svg>
+        </span>
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">1. Account Created</h3>
+          <time
+            class="text-xs text-gray-500 dark:text-gray-400"
+            data-tooltip-target="tooltip-step1"
+            data-tooltip-placement="top"
+          >{{ timestamps.account_created }}</time>
+        </div>
+        <div id="tooltip-step1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+          
+          <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+          We’ve created your account in our system. <span class="italic">Your user ID: <code>{{ tempId }}</code></span>
+        </p>
+      </li>
+
+      <!-- Step 2 -->
+      <li class="mb-10 ml-6">
+        <span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-primary rounded-full ring-4 ring-white dark:ring-gray-800">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+               d="M5 13l4 4L19 7"/></svg>
+        </span>
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">2. Email Verified</h3>
+          <time
+            class="text-xs text-gray-500 dark:text-gray-400"
+            data-tooltip-target="tooltip-step2"
+            data-tooltip-placement="top"
+          >{{ timestamps.account_verified }}</time>
+        </div>
+        <div id="tooltip-step2" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+          
+          <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+          Your email <strong>{{ email }}</strong> has been confirmed.
+        </p>
+      </li>
+
+      <!-- Step 3 -->
+      <li class="mb-10 ml-6">
+        <span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-primary rounded-full ring-4 ring-white dark:ring-gray-800">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+               d="M5 13l4 4L19 7"/></svg>
+        </span>
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">3. Docs Uploaded</h3>
+          <time
+            class="text-xs text-gray-500 dark:text-gray-400"
+            data-tooltip-target="tooltip-step3"
+            data-tooltip-placement="top"
+          >{{ timestamps.document_upload }}</time>
+        </div>
+        <div id="tooltip-step3" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+          
+          <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+          Uploaded Document received. <a href="#" class="text-primary hover:underline">View files</a>
+        </p>
+      </li>
+
+      <!-- Step 4 (pending) -->
+      <li class="mb-10 ml-6">
+        <span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-pending rounded-full ring-4 ring-white dark:ring-gray-800">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+               d="M12 8v4l2 2M12 20a8 8 0 100-16 8 8 0 000 16z"/></svg>
+        </span>
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">4. Verification Review</h3>
+          <time class="text-xs text-gray-500 dark:text-gray-400">In progress</time>
+        </div>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+          Our compliance team is reviewing your documents. You’ll be notified once done.
+        </p>
+      </li>
+
+      <!-- Step 5 (pending) -->
+      <li class="mb-10 ml-6">
+        <span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-pending rounded-full ring-4 ring-white dark:ring-gray-800">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+               d="M12 8v4l2 2M12 20a8 8 0 100-16 8 8 0 000 16z"/></svg>
+        </span>
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">5. Account Generation</h3>
+          <time class="text-xs text-gray-500 dark:text-gray-400">Queued</time>
+        </div>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+          Your account setup is being finalized. Hang tight!
+        </p>
+      </li>
+
+      <!-- Step 6 (pending) -->
+      <li class="ml-6">
+        <span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-pending rounded-full ring-4 ring-white dark:ring-gray-800">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+               d="M12 8v4l2 2M12 20a8 8 0 100-16 8 8 0 000 16z"/></svg>
+        </span>
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">6. Account Activated</h3>
+          <time class="text-xs text-gray-500 dark:text-gray-400">Pending</time>
+        </div>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+          Activation email will be sent once everything is complete.
+        </p>
+      </li>
+    </ol>
+    <!-- Add this just before the closing </div> of the main container -->
+    <div class="w-full text-center mt-6">
+        <a href="/shinxmanagement/account/thankyou" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-white bg-primary rounded-full hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+          <i class="bi bi-arrow-right mr-2 text-lg"></i>
+          Next Page
+        </a>
+      </div>
+  </div>
+
+  <!-- Flowbite JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+</body>
+</html>

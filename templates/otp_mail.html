@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OTP Verification Email</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e0f0ff, #ffffff);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    /* Container */
+    .email-container {
+      background: #fff;
+      border-radius: 16px;
+      width: 100%; max-width: 580px;
+      padding: 3rem;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Animated Elements */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
+    .email-container > * { animation: fadeInUp 0.5s ease-out both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    /* Title */
+    h1 {
+      font-size: 2rem; color: #1a202c; font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    /* Text Blocks */
+    p {
+      font-size: 1rem; color: #4a5568; line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    /* OTP Code with Icon */
+    .otp-wrapper {
+      display: inline-flex; align-items: center;
+      background: #ebf4ff;
+      border-radius: 12px;
+      padding: 0.75rem 2rem;
+      margin: 1rem 0;
+      position: relative;
+      cursor: default;
+      transition: transform 0.3s;
+    }
+    .otp-wrapper:hover { transform: translateY(-3px); }
+    .otp-icon {
+      font-size: 1.5rem; color: #1e40af; margin-right: 0.5rem;
+    }
+    .otp-code {
+      font-size: 1.75rem; font-weight: 600; color: #1e40af;
+      letter-spacing: 0.25rem;
+    }
+    /* Button */
+    .verify-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: #1e40af; color: #fff;
+      padding: 0.85rem 2rem; font-size: 1rem; font-weight: 600;
+      border: none; border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+    }
+    .verify-btn i { margin-left: 0.5rem; }
+    .verify-btn:hover {
+      background: #2563eb; transform: translateY(-2px);
+    }
+    /* Resend Text */
+    .resend-text {
+      display: block;
+      font-size: 0.875rem; color: #1e40af;
+      margin-top: 1rem; text-decoration: none;
+      transition: color 0.3s;
+    }
+    .resend-text:hover { color: #2563eb; }
+    /* Footer */
+    .footer {
+      margin-top: 2rem; font-size: 0.75rem; color: #a0aec0;
+    }
+    .footer a {
+      color: #1e40af; text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer a:hover { color: #2563eb; }
+    /* Decorative Floating Circles */
+    .circle { position: absolute; border-radius: 50%; background: #ebf4ff; }
+    .circle.one { width: 120px; height: 120px; top: -40px; right: -40px; }
+    .circle.two { width: 80px; height: 80px; bottom: -30px; left: -30px; }
+    @media (max-width: 480px) {
+      .email-container { padding: 2rem; }
+      h1 { font-size: 1.75rem; }
+      .otp-code { font-size: 1.5rem; }
+      .verify-btn { padding: 0.75rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <span class="circle one"></span>
+    <span class="circle two"></span>
+    <h1 class="delay-1">OTP Verification</h1>
+    <p class="delay-2">We've sent you a One-Time Password (OTP) to confirm your identity. Please use the code below to continue.</p>
+    <div class="otp-wrapper delay-3">
+      <i class="fas fa-key otp-icon"></i>
+      <span class="otp-code">{{ otp }}</span>
+    </div>
+    <p class="delay-4">Enter this code on the next screen to proceed with your verification.</p>
+    <a href="{{ verification_url }}" class="verify-btn delay-4">Verify OTP <i class="fas fa-arrow-right"></i></a>
+    <div class="footer delay-4">
+      <p>If you didn’t request this, you can safely ignore this email.</p>
+      <p>Need assistance? Visit our <a href="#">Support Center</a>.</p>
+    </div>
+  </div>
+</body>
+</html>

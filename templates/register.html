@@ -15,12 +15,15 @@
 <body class="bg-gray-50 dark:bg-gray-900">
 
   <main class="min-h-screen flex items-center justify-center px-4 py-8">
-    <div class="w-full max-w-3xl bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 space-y-6">
+    <div class="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 space-y-6">
+
       <h1 class="text-2xl font-extrabold text-center text-gray-900 dark:text-white">
         Open a New Account
       </h1>
 
-      <form action="#" method="POST" class="space-y-6">
+      <div id="alert-container"></div>
+
+      <form action="#" id="accountForm" method="POST" class="space-y-6">
 
         <!-- Personal Details -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -69,46 +72,26 @@
               class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
                      focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
           </div>
-          <div>
-            <label for="aadhaar" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Aadhaar Number *</label>
-            <input id="aadhaar" name="aadhaar" type="text" maxlength="12" required placeholder="123412341234"
-              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
-                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
-          </div>
-          <div>
-            <label for="pan" class="block text-sm font-medium text-gray-700 dark:text-gray-300">PAN Number *</label>
-            <input id="pan" name="pan" type="text" maxlength="10" required placeholder="ABCDE1234F"
-              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
-                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
-          </div>
         </div>
 
         <!-- Address -->
         <div class="space-y-4">
           <div>
-            <label for="address" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Street Address *</label>
-            <input id="address" name="address" type="text" required placeholder="123 Main St"
-              class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
-                     focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+            <label for="addressStreet" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Street Address *</label>
+            <input id="addressStreet" name="address[street]" type="text" required placeholder="123 Main St" class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label for="city" class="block text-sm font-medium text-gray-700 dark:text-gray-300">City *</label>
-              <input id="city" name="city" type="text" required placeholder="Mumbai"
-                class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
-                       focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
+              <label for="addressCity" class="block text-sm font-medium text-gray-700 dark:text-gray-300">City *</label>
+              <input id="addressCity" name="address[city]" type="text" required placeholder="Mumbai" class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
             </div>
             <div>
-              <label for="state" class="block text-sm font-medium text-gray-700 dark:text-gray-300">State *</label>
-              <input id="state" name="state" type="text" required placeholder="Maharashtra"
-                class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
-                       focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
+              <label for="addressState" class="block text-sm font-medium text-gray-700 dark:text-gray-300">State *</label>
+              <input id="addressState" name="address[state]" type="text" required placeholder="Maharashtra" class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
             </div>
             <div>
-              <label for="pincode" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Pincode *</label>
-              <input id="pincode" name="pincode" type="text" maxlength="6" required placeholder="400001"
-                class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 
-                       focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
+              <label for="addressPincode" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Pincode *</label>
+              <input id="addressPincode" name="address[pincode]" type="text" maxlength="6" required placeholder="400001" class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"/>
             </div>
           </div>
         </div>
@@ -157,7 +140,7 @@
 
             
 <label class="inline-flex items-center cursor-pointer">
-    <input type="checkbox" value="" class="sr-only peer" checked>
+    <input type="checkbox" name="toggle_2fa" class="sr-only peer" checked>
     <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
     <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Enable Two-Factor Authentication</span>
   </label>
@@ -165,7 +148,7 @@
           
             
 <label class="inline-flex items-center cursor-pointer">
-    <input type="checkbox" value="" class="sr-only peer" checked>
+    <input type="checkbox" name="toggle_allowTransactions" class="sr-only peer" checked>
     <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
     <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">      Allow Online Transactions</span>
   </label>
@@ -173,7 +156,7 @@
           
            
 <label class="inline-flex items-center cursor-pointer">
-    <input type="checkbox" value="" class="sr-only peer" checked>
+    <input type="checkbox" name="toggle_alerts" class="sr-only peer" checked>
     <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
     <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">      Receive Alerts (SMS/Email)</span>
   </label>
@@ -181,7 +164,7 @@
           
             
 <label class="inline-flex items-center cursor-pointer">
-    <input type="checkbox" value="" class="sr-only peer" checked>
+    <input type="checkbox" name="toggle_newsletters" class="sr-only peer" checked>
     <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
     <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">      Subscribe to Newsletters</span>
   </label>
@@ -191,13 +174,107 @@
 
         <!-- Submit -->
         <div class="pt-6">
-          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg px-5 py-3 transition">
+          <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg px-5 py-3 transition">
             Submit Application
           </button>
+        </div>
+
+        <div id="spinner" class="hidden flex justify-center mt-4">
+          <div class="animate-spin inline-block w-8 h-8 border-4 border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading"></div>
         </div>
 
       </form>
     </div>
   </main>
+
+  <script>
+    const form = document.getElementById('accountForm');
+    const spinner = document.getElementById('spinner');
+    const submitBtn = document.getElementById('submitBtn');
+    const alertContainer = document.getElementById('alert-container');
+
+    function showSpinner() {
+      spinner.classList.remove('hidden');
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    }
+
+    function hideSpinner() {
+      spinner.classList.add('hidden');
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+
+    function showAlert(message, type = 'error') {
+      const color = type === 'success' ? 'green' : 'red';
+      alertContainer.innerHTML = `
+        <div class="flex items-center p-4 mb-4 text-sm text-${color}-800 border border-${color}-300 rounded-lg bg-${color}-50 dark:bg-gray-800 dark:text-${color}-400 dark:border-${color}-800" role="alert">
+          <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="${type === 'success' ? 'M16.707 5.293a1 1 0 0 0-1.414 0L8 12.586 4.707 9.293a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l8-8a1 1 0 0 0 0-1.414z' : 'M8.257 3.099c.366-1.265 2.14-1.265 2.506 0a1.724 1.724 0 0 0 2.592 1.02c1.106-.79 2.603.41 1.812 1.516a1.724 1.724 0 0 0 1.02 2.591c1.265.366 1.265 2.14 0 2.506a1.724 1.724 0 0 0-1.02 2.592c.79 1.106-.41 2.603-1.516 1.812a1.724 1.724 0 0 0-2.591 1.02c-.366 1.265-2.14 1.265-2.506 0a1.724 1.724 0 0 0-2.592-1.02c-1.106.79-2.603-.41-1.812-1.516a1.724 1.724 0 0 0-1.02-2.591c-1.265-.366-1.265-2.14 0-2.506a1.724 1.724 0 0 0 1.02-2.592c-.79-1.106.41-2.603 1.516-1.812a1.724 1.724 0 0 0 2.591-1.02zM10 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1-7a.75.75 0 0 0-.75.75v3.5a.75.75 0 0 0 1.5 0v-3.5A.75.75 0 0 0 9 6z'}" />
+          </svg>
+          <span>${message}</span>
+        </div>
+      `;
+    }
+
+    async function submitForm(event) {
+      event.preventDefault();
+      alertContainer.innerHTML = '';
+      showSpinner();
+    
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+    
+      // Build nested address
+      payload.address = {};
+      for (const [key, value] of formData.entries()) {
+        const m = key.match(/^address\[(.+)\]$/);
+        if (m) payload.address[m[1]] = value;
+      }
+      Object.keys(payload).forEach(key => {
+        if (/^address\[.+\]$/.test(key)) delete payload[key];
+      });
+    
+      // ←——— NEW: ensure every toggle is sent
+      const toggleNames = [
+        'toggle_2fa',
+        'toggle_allowTransactions',
+        'toggle_alerts',
+        'toggle_newsletters'
+      ];
+      toggleNames.forEach(name => {
+        const input = form.querySelector(`input[name="${name}"]`);
+        // if it's checked, FormData.get(name) returns "on"; otherwise null
+        payload[name] = input && input.checked ? 'on' : 'off';
+      });
+      // ————————————————————————————————
+    
+      console.log('payload →', payload);
+    
+      try {
+        const response = await fetch(`${window.location.origin}/api/authentication/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+    
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.message || 'Something went wrong.');
+    
+        showAlert('Account created successfully!', 'success');
+        setTimeout(() => {
+          window.location.href = "/shinxmanagement/account/verify";
+        }, 2000);
+      } catch (error) {
+        showAlert(error.message || 'Network error, please try again.');
+      } finally {
+        hideSpinner();
+      }
+    }
+    
+
+    form.addEventListener('submit', submitForm);
+  </script>
+
 </body>
 </html>

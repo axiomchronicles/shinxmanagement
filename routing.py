@@ -1,4 +1,4 @@
-from aquilify.core.routing import rule
+from aquilify.core.routing import rule, include
 
 # ROUTER configuration.
 
@@ -12,5 +12,7 @@ from aquilify.core.routing import rule
 #     2. Add a URL to ROUTER:  rule('/blog', include = include('blog.routing'))
 
 ROUTER = [
-    ... # add all your rule's here.
+    # API's Routing..........
+    rule("/api/authentication", include = include("authentication.routing"), methods = ['GET', 'POST'], name = "Authentication API Route's"),
+    rule("/shinxmanagement", include = include("Routes.routing"), methods = ['GET', 'POST'], name = "Authentication API Route's"),
 ]

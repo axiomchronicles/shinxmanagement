@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Verification | MyBank</title>
+
+  <!-- Tailwind & Flowbite CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
+  <style>
+    .otp-box::-webkit-inner-spin-button,
+    .otp-box::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .otp-box {
+      text-align: center;
+      font-size: 1.5rem;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .otp-box:focus {
+      outline: none;
+      transform: scale(1.05);
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center px-4">
+
+  <div class="w-full max-w-md bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 space-y-6">
+    <div class="text-center">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Verify Your Email</h1>
+      <p class="text-gray-600 dark:text-gray-400 mt-2 text-sm">We've sent a 6-digit code to your email {{ email }}. Please enter it below.</p>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="alertContainer"></div>
+
+    <form id="verifyForm" class="space-y-6">
+      <!-- OTP Inputs -->
+      <div class="flex justify-between gap-1 sm:gap-2 w-full max-w-[320px] mx-auto">
+        <input type="text" maxlength="1" class="otp-box w-10 sm:w-12 h-14 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white" required />
+        <input type="text" maxlength="1" class="otp-box w-10 sm:w-12 h-14 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white" required />
+        <input type="text" maxlength="1" class="otp-box w-10 sm:w-12 h-14 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white" required />
+        <input type="text" maxlength="1" class="otp-box w-10 sm:w-12 h-14 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white" required />
+        <input type="text" maxlength="1" class="otp-box w-10 sm:w-12 h-14 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white" required />
+        <input type="text" maxlength="1" class="otp-box w-10 sm:w-12 h-14 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white" required />
+      </div>
+
+      <!-- Resend + Timer -->
+      <div class="text-center text-sm text-gray-600 dark:text-gray-400 relative">
+        Didn't receive the code?
+        <button
+          type="button"
+          id="resendBtn"
+          disabled
+          data-tooltip-target="tooltip-disabled"
+          data-tooltip-placement="top"
+          class="ml-1 font-medium text-blue-600 dark:text-blue-400 disabled:opacity-50"
+        >
+          Resend OTP
+        </button>
+        <div id="tooltip-disabled" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+          Please wait for the timer
+          <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        <span id="timer" class="ml-2 text-xs text-gray-500">(wait 30s)</span>
+      </div>
+
+      <!-- Verify Button -->
+      <button
+        id="verifyBtn"
+        type="submit"
+        class="w-full text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-xl text-sm px-5 py-3 text-center shadow-md transition-all flex items-center justify-center"
+      >
+        <svg id="spinner" aria-hidden="true" class="hidden w-5 h-5 mr-3 animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.0816 50.5908C9.0816 73.1917 27.3991 91.5092 50 91.5092C72.6009 91.5092 90.9184 73.1917 90.9184 50.5908C90.9184 27.9899 72.6009 9.67236 50 9.67236C27.3991 9.67236 9.0816 27.9899 9.0816 50.5908Z" fill="#E5E7EB"/>
+            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7235 75.2124 7.41289C69.5422 4.10236 63.2766 1.94025 56.7221 1.05197C51.7666 0.367184 46.7659 0.446843 41.8433 1.27873C39.4038 1.69328 37.9376 4.19778 38.5747 6.62326C39.2118 9.04874 41.6517 10.4717 44.0945 10.1071C47.8511 9.53318 51.6599 9.49517 55.454 10.0039C60.8641 10.6984 65.9999 12.5457 70.6331 15.4479C75.2663 18.3501 79.3347 22.2094 82.5849 26.8152C84.9175 29.9126 86.7993 33.2911 88.1811 36.8758C89.083 39.2158 91.5422 40.6781 93.9676 39.0409Z" fill="currentColor"/>
+        </svg>
+        <span id="btnText">Verify Email</span>
+      </button>
+
+      <!-- Back Link -->
+      <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+        Wrong email?
+        <a href="/shinxmanagement/account/register" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Go back</a>
+      </p>
+    </form>
+  </div>
+
+  <!-- Flowbite JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+  <script>
+    const inputs = document.querySelectorAll('.otp-box');
+    const resendBtn = document.getElementById("resendBtn");
+    const timerEl = document.getElementById("timer");
+    const form = document.getElementById('verifyForm');
+    const verifyBtn = document.getElementById('verifyBtn');
+    const spinner = document.getElementById('spinner');
+    const btnText = document.getElementById('btnText');
+    const alertContainer = document.getElementById('alertContainer');
+
+    // Auto-focus on next box
+    inputs.forEach((input, idx) => {
+      input.addEventListener('input', () => {
+        if (input.value && idx < inputs.length - 1) inputs[idx + 1].focus();
+      });
+      input.addEventListener('keydown', (e) => {
+        if (e.key === "Backspace" && !input.value && idx > 0) inputs[idx - 1].focus();
+      });
+    });
+
+    // Timer
+    let countdown = 30;
+    let interval;
+
+    function startTimer() {
+      resendBtn.disabled = true;
+      timerEl.textContent = `(wait ${countdown}s)`;
+
+      interval = setInterval(() => {
+        countdown--;
+        timerEl.textContent = `(wait ${countdown}s)`;
+        if (countdown <= 0) {
+          clearInterval(interval);
+          resendBtn.disabled = false;
+          timerEl.textContent = "";
+          countdown = 30;
+        }
+      }, 1000);
+    }
+
+    // Show alert helper
+    function showAlert(type, message) {
+      alertContainer.innerHTML = '';
+      const id = `alert-${Date.now()}`;
+      alertContainer.innerHTML = `
+        <div id="${id}" class="flex p-4 mb-4 text-sm rounded-lg ${type === 'error' ? 'text-red-800 bg-red-100 dark:bg-red-200 dark:text-red-800' : 'text-green-800 bg-green-100 dark:bg-green-200 dark:text-green-800'}" role="alert">
+          <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M18 10c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-11 3a1 1 0 112 0v2a1 1 0 11-2 0v-2zm1-8a1 1 0 00-.894 1.447l1 2a1 1 0 001.788 0l1-2A1 1 0 0010 5a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+          </svg>
+          <span class="sr-only">Info</span>
+          <div>
+            ${message}
+          </div>
+        </div>
+      `;
+    }
+
+    // Resend OTP
+    resendBtn.addEventListener("click", async () => {
+      alertContainer.innerHTML = '';
+      try {
+        const response = await fetch('http://localhost:8000/api/authentication/resend', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          showAlert('error', data.message || 'Failed to resend OTP.');
+          return;
+        }
+        showAlert('success', data.message || 'OTP resent successfully!');
+        startTimer();
+      } catch (err) {
+        console.error('Resend error:', err);
+        showAlert('error', 'Network error. Please try again later.');
+      }
+    });
+
+    // Start timer on page load
+    startTimer();
+
+    // Form submission
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      alertContainer.innerHTML = '';
+
+      const otp = Array.from(inputs).map(i => i.value).join('');
+      if (otp.length < inputs.length) {
+        showAlert('error', 'Please enter the full 6-digit code.');
+        return;
+      }
+
+      spinner.classList.remove('hidden');
+      btnText.textContent = 'Verifying...';
+      verifyBtn.disabled = true;
+
+      try {
+        const response = await fetch(`${window.location.origin}/api/authentication/verify`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ otp })
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || 'Verification failed.');
+        }
+
+        showAlert('success', data.message || 'Email verified successfully! Redirecting...');
+        setTimeout(() => window.location.href = '/shinxmanagement/account/document', 1500);
+      } catch (err) {
+        console.error('Verification error:', err);
+        showAlert('error', err.message || 'Something went wrong. Please try again.');
+      } finally {
+        spinner.classList.add('hidden');
+        btnText.textContent = 'Verify Email';
+        verifyBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

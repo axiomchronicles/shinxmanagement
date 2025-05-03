@@ -78,7 +78,7 @@ APPLICATION_DISPATCHER = [ ]
 
 TEMPLATES = [
     {
-        "BACKEND": "aquilify.template.jinja2",
+        "BACKEND": "aquilify.template.jinja2.Jinja2Template",
         "DIRS": [ os.path.join(BASE_DIR, "templates") ],
         "CSRF": "aquilify.security.csrf.CSRF",
         "OPTIONS": {
@@ -143,6 +143,7 @@ MIDDLEWARES = [
     "aquilify.middlewares.MediaMiddleware",
     "aquilify.middlewares.ConditionalGetMiddleware",
     "aquilify.core.messages.middleware.MessageMiddleware",
+    "aquilify.middlewares.CORSMiddleware",
 ]
 
 # stage handlers are the middleware hooks with advance features and configurations...
@@ -165,6 +166,24 @@ DATABASE = {
         "MODALS": [ ]
     }
 }
+
+# Mailer Configuration
+
+# settings.py
+
+EMAIL_BACKEND = 'aquilify.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'embrakeproject@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'jkohyutipglocgck'  # Your Gmail password or App password
+DEFAULT_FROM_EMAIL = 'embrakeproject@gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False  # Do NOT use SSL
+EMAIL_SSL_KEYFILE = None  # Not needed
+EMAIL_SSL_CERTFILE = None  # Not needed
+EMAIL_TIMEOUT = 5
+EMAIL_USE_LOCALTIME = True
 
 ### Sessions Configuration....
 
