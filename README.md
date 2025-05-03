@@ -85,12 +85,25 @@ The backend is powered by **Aquilify**, an ASGI web server. It handles user auth
 
 Here are some screenshots of the application:
 
-1. **Account Setup Screen:**
-   ![Account Setup](assets/account-setup.png)
+1. **Account Register Screen:**
 
-2. **Login Screen:**
-   ![Login Screen](assets/login-screen.png)
+   ![Account Setup](screenshots/register.png)
 
+2. **Email verification Screen:**
+
+   ![Login Screen](screenshots/verify.png)
+
+3. **Document Upload Screen:**
+
+   ![Login Screen](screenshots/identity.png)
+
+4. **Timeline Screen:**
+
+   ![Login Screen](screenshots/timeline.png)
+
+5. **Thankyou Screen:**
+
+   ![Login Screen](screenshots/thankyou.png)
 ## Contributing
 
 Contributions are welcome! To contribute to this project, follow these steps:
